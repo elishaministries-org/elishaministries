@@ -5,37 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Elisha Ministries</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { brand: { dark: '#0a3068', light: '#005bb5', accent: '#e0f2fe' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-    <!-- Navigation -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo.png" alt="Elisha Ministries Logo" class="h-12 object-contain">
-            </a>
-            <nav class="hidden md:flex gap-6 font-semibold text-blue-900">
-                <a href="index.html" class="hover:text-blue-600">Home</a>
-                <a href="about us.html" class="hover:text-blue-600 text-blue-700">About Us</a>
-                <a href="our activities.html" class="hover:text-blue-600">Activities</a>
-                <a href="gallery.html" class="hover:text-blue-600">Gallery</a>
-                <a href="donate.html" class="hover:text-blue-600">Donate</a>
-                <a href="contact us.html" class="hover:text-blue-600">Contact Us</a>
-            </nav>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen font-sans">
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3">
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer">
+                    <img class="h-16 sm:h-20 w-auto" src="logo.png" alt="Elisha Ministries Logo">
+                </a>
+                <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Home</a>
+                    <a href="about us.html" class="text-brand-light font-semibold transition-colors border-b-2 border-brand-light pb-1">About Us</a>
+                    <a href="our activities.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Our Activities</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Gallery</a>
+                    <a href="contact us.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Contact Us</a>
+                    <a href="donate.html" class="bg-brand-light text-white px-5 py-2 rounded-full font-medium hover:bg-brand-dark transition-colors shadow-sm inline-block">Donate</a>
+                </nav>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-dark hover:text-brand-light focus:outline-none p-2 rounded-md">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-inner absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-1 sm:px-3 flex flex-col">
+                <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Home</a>
+                <a href="about us.html" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark bg-blue-50">About Us</a>
+                <a href="our activities.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Our Activities</a>
+                <a href="gallery.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Gallery</a>
+                <a href="contact us.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Contact Us</a>
+                <a href="donate.html" class="block px-3 py-3 mt-2 rounded-md text-base font-medium bg-brand-light text-white hover:bg-brand-dark text-center shadow-sm">Donate</a>
+            </div>
         </div>
     </header>
 
-    <main class="flex-grow container mx-auto px-4 py-12">
-        <h1 class="text-4xl font-bold text-blue-900 text-center mb-8">About Us</h1>
-        <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-sm">
-            <h2 class="text-2xl font-semibold mb-4">Our Mission</h2>
-            <p class="text-gray-600 mb-6">To preach the gospel, make disciples, and serve our community through the love of Christ. We aim to be a beacon of hope and a place of spiritual growth for everyone.</p>
-            <h2 class="text-2xl font-semibold mb-4">Our Vision</h2>
-            <p class="text-gray-600">To build a strong, faith-filled community that impacts the world positively through compassion, outreach, and unwavering faith.</p>
-        </div>
+    <main class="flex-grow pt-32 pb-12 w-full">
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-brand-dark">About Elisha Ministries</h1>
+                <div class="w-24 h-1 bg-brand-light mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+                <h2 class="text-2xl font-bold text-brand-dark mb-4">Our Heritage & Mission</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                    Greetings to you in the name of our gracious and precious Lord Jesus Christ. Established and registered in 2014 at Kotikesavaram, East Godavari District, Andhra Pradesh, Elisha Ministries & Trust (EMT) is an interdenominational evangelical organization. We are dedicated to the glory of God and the service of mankind, operating as a welfare and Gospel proclamation ministry for the poor, needy, and unreached.
+                </p>
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    Our mission is to preach the word of God not only by word but through actionable compassion—meeting physical needs to open hearts to spiritual truths.
+                </p>
+
+                <h2 class="text-2xl font-bold text-brand-dark mb-4">Our Founder: Late Revu Elisha</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                    Born on October 24, 1955, Mr. Elisha grew up facing many hardships as an orphan. Despite these challenges, he completed his education and grew into a devoted Christian youth, leading his peers in the word of God. Believing that winning souls and doing God's work held more eternal value than mere physical labor, he dedicated his life to ministry. 
+                </p>
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    He married Vimalavathi in 1982, and together they were blessed with four children. He fostered a deep burden for orphans, helping them grow physically, mentally, and spiritually. Pastor Elisha served faithfully until he passed away on April 8, 2016, leaving behind a profound legacy of God's glory on earth.
+                </p>
+
+                <h2 class="text-2xl font-bold text-brand-dark mb-4">Present Leadership: Anand Kumar</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                    Born on December 11, 1987, Anand Kumar was dedicated to the ministry from childhood. After sensing a direct call to Gospel ministry in 2010, he completed his Bachelor's in Theology, followed by a Master of Arts and a B.Ed. Though professional job opportunities knocked, he chose to carry forward his father's mantle.
+                </p>
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    Anand has a burning passion to see lives transformed by the power of the Gospel across India. Emulating Jesus Christ, he provides both spiritual and physical nourishment to the hungry. Supported by his wife Pushpa and their daughters Vincy and Ellen, he oversees a children's home, widows' home, evening school, and bi-monthly free food distributions.
+                </p>
+
+                <h2 class="text-2xl font-bold text-brand-dark mb-4">Our Vision</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
+                    <li>Church plantation, especially in unreached and tribal areas.</li>
+                    <li>Establishment of educational and theological institutions.</li>
+                    <li>Establishment of hospitals for the poor and needy.</li>
+                    <li>Conducting crusades and spiritual seminars.</li>
+                    <li>Providing homes and ongoing support for widows and the aged.</li>
+                    <li>Conducting free medical camps in remote locations.</li>
+                </ul>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-gray-900 text-white text-center py-6">
-        <p>&copy; 2026 Elisha Ministries. All Rights Reserved.</p>
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <img class="h-10 w-auto brightness-0 invert opacity-80 mr-3" src="logo.png" alt="Logo">
+                <span class="text-white text-lg font-semibold">Elisha Ministries</span>
+            </div>
+            <div class="text-sm text-gray-400 text-center md:text-right">
+                <p>&copy; 2026 Elisha Ministries. All rights reserved.</p>
+                <p class="mt-1">East Godavari, Andhra Pradesh, India</p>
+            </div>
+        </div>
     </footer>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
