@@ -1,9 +1,112 @@
-<script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Elisha Ministries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { brand: { dark: '#0a3068', light: '#005bb5', accent: '#e0f2fe' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen font-sans">
+    
+    <!-- Navigation -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3">
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer">
+                    <img class="h-16 sm:h-20 w-auto" src="logo.png" alt="Elisha Ministries Logo">
+                </a>
+                <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Home</a>
+                    <a href="about us.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">About Us</a>
+                    <a href="our activities.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Our Activities</a>
+                    <a href="gallery.html" class="text-brand-light font-semibold transition-colors border-b-2 border-brand-light pb-1">Gallery</a>
+                    <a href="contact us.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Contact Us</a>
+                    <a href="donate.html" class="bg-brand-light text-white px-5 py-2 rounded-full font-medium hover:bg-brand-dark transition-colors shadow-sm inline-block">Donate</a>
+                </nav>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-dark hover:text-brand-light focus:outline-none p-2 rounded-md">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-inner absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-1 sm:px-3 flex flex-col">
+                <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Home</a>
+                <a href="about us.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">About Us</a>
+                <a href="our activities.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Our Activities</a>
+                <a href="gallery.html" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark bg-blue-50">Gallery</a>
+                <a href="contact us.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Contact Us</a>
+                <a href="donate.html" class="block px-3 py-3 mt-2 rounded-md text-base font-medium bg-brand-light text-white hover:bg-brand-dark text-center shadow-sm">Donate</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-32 pb-12 w-full">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-brand-dark">Photo Gallery</h1>
+                <div class="w-24 h-1 bg-brand-light mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Glimpses of God's work through Elisha Ministries.</p>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loading-spinner" class="flex justify-center items-center py-20">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-light"></div>
+            </div>
+
+            <!-- Setup Message -->
+            <div id="setup-message" class="hidden text-center py-6 mb-8">
+                <div class="bg-blue-50 text-blue-800 p-4 rounded-lg inline-block border border-blue-200">
+                    <p>Showing placeholder images. The correct Google API key is required to load actual Drive photos.</p>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="hidden text-center py-10">
+                <div class="bg-red-50 text-red-600 p-4 rounded-lg inline-block border border-red-200">
+                    <p>Unable to load gallery.</p>
+                </div>
+            </div>
+
+            <!-- Gallery Container -->
+            <div id="gallery-container" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Images will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <img class="h-10 w-auto brightness-0 invert opacity-80 mr-3" src="logo.png" alt="Logo">
+                <span class="text-white text-lg font-semibold">Elisha Ministries</span>
+            </div>
+            <div class="text-sm text-gray-400 text-center md:text-right">
+                <p>&copy; 2026 Elisha Ministries. All rights reserved.</p>
+                <p class="mt-1">East Godavari, Andhra Pradesh, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { 
+            document.getElementById('mobile-menu').classList.toggle('hidden'); 
+        });
 
         // Gallery API Logic
-        const API_KEY = 'AIzaSyDmNDiCGZNslGnzz4ZCEmKPBKDezKsUyEk'; // You still need to replace this with a valid Google API Key
-        const FOLDER_ID = '1tzJhSTVVYbh1J42kimYgGnLZmgd0P0BD'; // Updated with your Drive Folder ID
+        const API_KEY = 'AIzaSyDmNDiCGZNslGnzz4ZCEmKPBKDezKsUyEk'; 
+        const FOLDER_ID = '1tzJhSTVVYbh1J42kimYgGnLZmgd0P0BD'; 
         
         const galleryContainer = document.getElementById('gallery-container');
         const loadingSpinner = document.getElementById('loading-spinner');
@@ -17,7 +120,7 @@
             const img = document.createElement('img');
             img.src = imageUrl;
             img.alt = altText || 'Gallery Image';
-            img.className = 'gallery-img w-full h-full object-cover';
+            img.className = 'gallery-img w-full h-full object-cover transition-transform duration-300 group-hover:scale-105';
             img.loading = 'lazy';
             
             img.onload = () => img.classList.add('loaded');
@@ -32,13 +135,15 @@
 
         async function fetchDriveImages() {
             try {
-                // Modified check to only look for the API key since the Folder ID is now set
                 if (API_KEY === 'YOUR_GOOGLE_API_KEY') {
                     showPlaceholderGallery();
                     return;
                 }
-               const fetchUrl = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&fields=files(id,name,mimeType,thumbnailLink)&key=${API_KEY}`;                const response = await fetch(fetchUrl);
+                const fetchUrl = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&fields=files(id,name,mimeType,thumbnailLink)&key=${API_KEY}`;                
+                const response = await fetch(fetchUrl);
+                
                 if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                
                 const data = await response.json();
                 const imageFiles = data.files.filter(file => file.mimeType.startsWith('image/'));
 
@@ -47,12 +152,11 @@
                 loadingSpinner.classList.add('hidden');
                 galleryContainer.classList.remove('hidden');
 
-               imageFiles.forEach(file => {
-    // Use the official thumbnail link provided by the API
-    const thumbnailUrl = file.thumbnailLink; 
-    const card = createImageCard(thumbnailUrl, file.name);
-    galleryContainer.appendChild(card);
-});
+                imageFiles.forEach(file => {
+                    const thumbnailUrl = file.thumbnailLink; 
+                    const card = createImageCard(thumbnailUrl, file.name);
+                    galleryContainer.appendChild(card);
+                });
             } catch (error) {
                 loadingSpinner.classList.add('hidden');
                 errorMessage.classList.remove('hidden');
@@ -76,3 +180,5 @@
 
         fetchDriveImages();
     </script>
+</body>
+</html>
