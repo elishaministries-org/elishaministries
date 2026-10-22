@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- [Insert Exact Same Head & Tailwind Setup from Index] -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elisha Ministries - Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0a3068', light: '#005bb5', accent: '#e0f2fe' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .spa-section { display: none; opacity: 0; }
+        .spa-section.active { display: block; opacity: 1; animation: fadeIn 0.4s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .gallery-img { opacity: 0; transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; }
+        .gallery-img.loaded { opacity: 1; }
+        .gallery-item:hover .gallery-img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen font-sans">
+    
+    <!-- [Insert Exact Same Header from Index, but change the 'Gallery' anchor tag to be Active] -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <!-- ... -->
+        <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+            <a href="index.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Home</a>
+            <a href="about.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">About Us</a>
+            <a href="activities.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Our Activities</a>
+            <a href="gallery.html" class="text-brand-light font-semibold transition-colors border-b-2 border-brand-light pb-1">Gallery</a>
+            <a href="contact.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Contact Us</a>
+            <a href="donate.html" class="bg-brand-light text-white px-5 py-2 rounded-full font-medium hover:bg-brand-dark transition-colors shadow-sm inline-block">Donate</a>
+        </nav>
+        <!-- ... -->
+    </header>
+
+    <main class="flex-grow pt-24 pb-12 w-full">
+        <section id="gallery" class="spa-section active max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">Photo Gallery</h2>
+                <div class="w-24 h-1 bg-brand-light mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Moments of fellowship, outreach, and joy from our church family.</p>
+            </div>
+
+            <!-- Setup Notification -->
+            <div id="setup-message" class="hidden bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 rounded-r-md shadow-sm max-w-3xl mx-auto">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700 font-medium">Developer Note: Google Drive API Key or Folder ID not configured. Displaying placeholder images.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loading-spinner" class="flex justify-center items-center py-12">
+                <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-brand-light" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span class="text-gray-500 font-medium text-lg">Loading latest photos...</span>
+            </div>
+
+            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 hidden"></div>
+            <div id="error-message" class="hidden text-center py-12"><p class="text-red-500 font-medium text-lg">Failed to load images.</p></div>
+        </section>
+    </main>
+
+    <!-- [Insert Exact Same Footer] -->
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-auto">
+        <!-- ... -->
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+
+        // Gallery API Logic
+        const API_KEY = 'YOUR_GOOGLE_API_KEY'; 
+        const FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID';
+        
+        const galleryContainer = document.getElementById('gallery-container');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const errorMessage = document.getElementById('error-message');
+        const setupMessage = document.getElementById('setup-message');
+
+        function createImageCard(imageUrl, altText) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'gallery-item relative aspect-square bg-gray-200 rounded-xl overflow-hidden shadow-md cursor-pointer group';
+            
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = altText || 'Gallery Image';
+            img.className = 'gallery-img w-full h-full object-cover';
+            img.loading = 'lazy';
+            
+            img.onload = () => img.classList.add('loaded');
+            img.onerror = () => {
+                img.src = 'https://placehold.co/400x400/e2e8f0/64748b?text=Image+Unavailable';
+                img.classList.add('loaded');
+            };
+
+            wrapper.appendChild(img);
+            return wrapper;
+        }
+
+        async function fetchDriveImages() {
+            try {
+                if (API_KEY === 'YOUR_GOOGLE_API_KEY' || FOLDER_ID === 'YOUR_GOOGLE_DRIVE_FOLDER_ID') {
+                    showPlaceholderGallery();
+                    return;
+                }
+                const fetchUrl = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&fields=files(id,name,mimeType)&key=${API_KEY}`;
+                const response = await fetch(fetchUrl);
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                const data = await response.json();
+                const imageFiles = data.files.filter(file => file.mimeType.startsWith('image/'));
+
+                if (imageFiles.length === 0) throw new Error('No images found.');
+
+                loadingSpinner.classList.add('hidden');
+                galleryContainer.classList.remove('hidden');
+
+                imageFiles.forEach(file => {
+                    const thumbnailUrl = `https://drive.google.com/thumbnail?id=${file.id}&sz=w800`;
+                    const card = createImageCard(thumbnailUrl, file.name);
+                    galleryContainer.appendChild(card);
+                });
+            } catch (error) {
+                loadingSpinner.classList.add('hidden');
+                errorMessage.classList.remove('hidden');
+                if (error.message.includes('No images') || error.message.includes('API Error')) {
+                    errorMessage.querySelector('p').textContent = `Unable to load gallery: ${error.message}`;
+                }
+            }
+        }
+
+        function showPlaceholderGallery() {
+            setupMessage.classList.remove('hidden');
+            loadingSpinner.classList.add('hidden');
+            galleryContainer.classList.remove('hidden');
+
+            for (let i = 1; i <= 8; i++) {
+                const placeholderUrl = `https://picsum.photos/seed/elishaministry${i}/600/600`;
+                const card = createImageCard(placeholderUrl, `Church Moment ${i}`);
+                galleryContainer.appendChild(card);
+            }
+        }
+
+        fetchDriveImages();
+    </script>
+</body>
+</html>
