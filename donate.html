@@ -5,42 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate - Elisha Ministries</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { brand: { dark: '#0a3068', light: '#005bb5', accent: '#e0f2fe' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-    <!-- Navigation -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo.png" alt="Elisha Ministries Logo" class="h-12 object-contain">
-            </a>
-            <nav class="hidden md:flex gap-6 font-semibold text-blue-900">
-                <a href="index.html" class="hover:text-blue-600">Home</a>
-                <a href="about us.html" class="hover:text-blue-600">About Us</a>
-                <a href="our activities.html" class="hover:text-blue-600">Activities</a>
-                <a href="gallery.html" class="hover:text-blue-600">Gallery</a>
-                <a href="donate.html" class="hover:text-blue-600 text-blue-700">Donate</a>
-                <a href="contact us.html" class="hover:text-blue-600">Contact Us</a>
-            </nav>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen font-sans">
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3">
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer">
+                    <img class="h-16 sm:h-20 w-auto" src="logo.png" alt="Elisha Ministries Logo">
+                </a>
+                <nav class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Home</a>
+                    <a href="about us.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">About Us</a>
+                    <a href="our activities.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Our Activities</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Gallery</a>
+                    <a href="contact us.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Contact Us</a>
+                    <a href="donate.html" class="text-brand-light font-semibold transition-colors border-b-2 border-brand-light pb-1">Donate</a>
+                </nav>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-dark hover:text-brand-light focus:outline-none p-2 rounded-md">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-inner absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-1 sm:px-3 flex flex-col">
+                <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Home</a>
+                <a href="about us.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">About Us</a>
+                <a href="our activities.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Our Activities</a>
+                <a href="gallery.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Gallery</a>
+                <a href="contact us.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-gray-50">Contact Us</a>
+                <a href="donate.html" class="block px-3 py-3 mt-2 rounded-md text-base font-medium text-brand-dark bg-blue-50">Donate</a>
+            </div>
         </div>
     </header>
 
-    <main class="flex-grow container mx-auto px-4 py-12">
-        <h1 class="text-4xl font-bold text-blue-900 text-center mb-8">Support Our Ministry</h1>
-        <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-sm text-center">
-            <p class="text-gray-600 mb-6">Your generous donations help us continue our outreach programs, church maintenance, and community support. Every contribution makes a difference.</p>
-            <div class="bg-blue-50 p-6 rounded border border-blue-100 mb-6">
-                <h3 class="font-bold text-lg mb-2 text-blue-900">Bank Transfer Details</h3>
-                <p class="text-sm text-gray-700"><strong>Bank Name:</strong> [Insert Bank]</p>
-                <p class="text-sm text-gray-700"><strong>Account Name:</strong> Elisha Ministries</p>
-                <p class="text-sm text-gray-700"><strong>Account No:</strong> XXXXXXXX</p>
-                <p class="text-sm text-gray-700"><strong>IFSC/Routing:</strong> XXXXXXXX</p>
+    <main class="flex-grow pt-32 pb-12 w-full">
+        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-brand-dark">Support Our Ministry</h1>
+                <div class="w-24 h-1 bg-brand-light mx-auto mt-4 rounded-full"></div>
             </div>
-            <button class="bg-blue-900 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-800 transition">Donate Online (Coming Soon)</button>
-        </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
+                <blockquote class="italic text-gray-600 mb-8 border-l-4 border-brand-light pl-4 text-left">
+                    "Remember this: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each man has to give what he has decided in his heart to give, not reluctantly or under compulsion, <strong>FOR GOD LOVES A CHEERFUL GIVER</strong>. And God is able to make all grace abound to you, so that in all things at all times, having all that you need, you will abound in every good work."
+                </blockquote>
+                
+                <p class="text-gray-700 mb-8 leading-relaxed">
+                    Your generous donations help us continue our outreach programs, maintain the church, run the children's and widows' homes, and provide free food and medical care to those in need. Every contribution makes a lasting difference.
+                </p>
+
+                <div class="bg-brand-accent p-6 rounded-xl border border-blue-100 mb-8 max-w-md mx-auto text-left">
+                    <h3 class="font-bold text-xl mb-4 text-brand-dark border-b border-blue-200 pb-2">Bank Transfer Details</h3>
+                    <div class="space-y-2">
+                        <p class="text-gray-800"><span class="font-semibold text-brand-dark w-32 inline-block">Bank Name:</span> [Insert Bank]</p>
+                        <p class="text-gray-800"><span class="font-semibold text-brand-dark w-32 inline-block">Account Name:</span> Elisha Ministries</p>
+                        <p class="text-gray-800"><span class="font-semibold text-brand-dark w-32 inline-block">Account No:</span> XXXXXXXX</p>
+                        <p class="text-gray-800"><span class="font-semibold text-brand-dark w-32 inline-block">IFSC/Routing:</span> XXXXXXXX</p>
+                    </div>
+                </div>
+                
+                <button class="bg-brand-light text-white px-8 py-3 rounded-full font-bold hover:bg-brand-dark transition-colors shadow-md inline-block">
+                    Donate Online (Coming Soon)
+                </button>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-gray-900 text-white text-center py-6">
-        <p>&copy; 2026 Elisha Ministries. All Rights Reserved.</p>
+    <footer class="bg-gray-900 text-gray-300 py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <img class="h-10 w-auto brightness-0 invert opacity-80 mr-3" src="logo.png" alt="Logo">
+                <span class="text-white text-lg font-semibold">Elisha Ministries</span>
+            </div>
+            <div class="text-sm text-gray-400 text-center md:text-right">
+                <p>&copy; 2026 Elisha Ministries. All rights reserved.</p>
+                <p class="mt-1">East Godavari, Andhra Pradesh, India</p>
+            </div>
+        </div>
     </footer>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
