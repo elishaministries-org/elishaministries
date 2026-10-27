@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - Elisha Ministries</title>
+    <title>Gallery - Elisha Ministries</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-slate-50 to-blue-50 text-gray-800 flex flex-col min-h-screen font-sans selection:bg-brand-light selection:text-white">
+    
+    <!-- Navigation -->
     <header class="bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 fixed w-full top-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-3">
@@ -23,9 +25,9 @@
                     <a href="index.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Home</a>
                     <a href="about us.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">About Us</a>
                     <a href="our activities.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Our Activities</a>
-                    <a href="gallery.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Gallery</a>
+                    <a href="gallery.html" class="text-brand-light font-semibold transition-colors border-b-2 border-brand-light pb-1">Gallery</a>
                     <a href="contact us.html" class="text-gray-600 hover:text-brand-light font-medium transition-colors border-b-2 border-transparent hover:border-brand-light pb-1">Contact Us</a>
-                    <a href="donate.html" class="text-brand-light font-semibold transition-colors border-b-2 border-brand-light pb-1">Donate</a>
+                    <a href="donate.html" class="bg-brand-light text-white px-5 py-2 rounded-full font-medium hover:bg-brand-dark transition-all transform hover:-translate-y-0.5 shadow-sm hover:shadow-md inline-block">Donate</a>
                 </nav>
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-brand-dark hover:text-brand-light focus:outline-none p-2 rounded-md">
@@ -36,50 +38,50 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-lg absolute w-full">
             <div class="px-4 pt-2 pb-4 space-y-1 sm:px-3 flex flex-col">
                 <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-blue-50 transition-colors">Home</a>
                 <a href="about us.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-blue-50 transition-colors">About Us</a>
                 <a href="our activities.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-blue-50 transition-colors">Our Activities</a>
-                <a href="gallery.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-blue-50 transition-colors">Gallery</a>
+                <a href="gallery.html" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark bg-blue-50">Gallery</a>
                 <a href="contact us.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-light hover:bg-blue-50 transition-colors">Contact Us</a>
-                <a href="donate.html" class="block px-3 py-3 mt-2 rounded-md text-base font-medium text-brand-dark bg-blue-50">Donate</a>
+                <a href="donate.html" class="block px-3 py-3 mt-2 rounded-md text-base font-medium bg-brand-light text-white hover:bg-brand-dark text-center shadow-sm transition-colors">Donate</a>
             </div>
         </div>
     </header>
 
     <main class="flex-grow pt-32 pb-12 w-full">
-        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-dark to-brand-light pb-2">Support Our Ministry</h1>
+                <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-dark to-brand-light pb-2">Photo Gallery</h1>
                 <div class="w-24 h-1.5 bg-gradient-to-r from-brand-light to-brand-accent mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">Glimpses of God's work through Elisha Ministries.</p>
             </div>
 
-            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 text-center hover:shadow-2xl transition-shadow duration-300">
-                <blockquote class="italic text-gray-700 mb-10 border-l-4 border-brand-light bg-blue-50/50 p-6 rounded-r-2xl text-left shadow-sm">
-                    "Remember this: Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously. Each man has to give what he has decided in his heart to give, not reluctantly or under compulsion, <strong class="text-brand-dark">FOR GOD LOVES A CHEERFUL GIVER</strong>. And God is able to make all grace abound to you, so that in all things at all times, having all that you need, you will abound in every good work."
-                </blockquote>
-                
-                <p class="text-gray-600 mb-10 leading-relaxed text-lg px-4">
-                    Your generous donations help us continue our outreach programs, maintain the church, run the children's and widows' homes, and provide free food and medical care to those in need. Every contribution makes a lasting difference.
-                </p>
+            <!-- Loading Spinner -->
+            <div id="loading-spinner" class="flex justify-center items-center py-20">
+                <div class="animate-spin rounded-full h-14 w-14 border-t-2 border-b-2 border-brand-light"></div>
+            </div>
 
-                <div class="bg-gradient-to-br from-brand-accent to-blue-50 p-8 rounded-2xl border border-blue-200 mb-10 max-w-md mx-auto text-left shadow-md hover:shadow-lg transition-shadow">
-                    <h3 class="font-bold text-xl mb-4 text-brand-dark border-b-2 border-blue-200 pb-3 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-brand-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                        Bank Transfer Details
-                    </h3>
-                    <div class="space-y-3">
-                        <p class="text-gray-800 flex justify-between border-b border-blue-100 pb-2"><span class="font-semibold text-brand-dark">Bank Name:</span> <span>[Insert Bank]</span></p>
-                        <p class="text-gray-800 flex justify-between border-b border-blue-100 pb-2"><span class="font-semibold text-brand-dark">Account Name:</span> <span>Elisha Ministries</span></p>
-                        <p class="text-gray-800 flex justify-between border-b border-blue-100 pb-2"><span class="font-semibold text-brand-dark">Account No:</span> <span>XXXXXXXX</span></p>
-                        <p class="text-gray-800 flex justify-between"><span class="font-semibold text-brand-dark">IFSC/Routing:</span> <span>XXXXXXXX</span></p>
-                    </div>
+            <!-- Setup Message -->
+            <div id="setup-message" class="hidden text-center py-6 mb-8">
+                <div class="bg-blue-50 text-blue-800 p-5 rounded-xl inline-block border border-blue-200 shadow-sm">
+                    <p class="font-medium">Showing placeholder images. The correct Google API key is required to load actual Drive photos.</p>
                 </div>
-                
-                <button class="bg-gradient-to-r from-brand-light to-brand-dark text-white px-10 py-4 rounded-full font-bold hover:shadow-xl transition-all transform hover:-translate-y-1 shadow-md inline-block text-lg">
-                    Donate Online (Coming Soon)
-                </button>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="hidden text-center py-10">
+                <div class="bg-red-50 text-red-600 p-5 rounded-xl inline-block border border-red-200 shadow-sm">
+                    <p class="font-medium">Unable to load gallery.</p>
+                </div>
+            </div>
+
+            <!-- Gallery Container -->
+            <div id="gallery-container" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Images will be dynamically added here -->
             </div>
         </section>
     </main>
@@ -106,10 +108,92 @@
             </div>
         </div>
     </footer>
+
     <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { 
+            document.getElementById('mobile-menu').classList.toggle('hidden'); 
         });
+
+        // Gallery API Logic
+        const API_KEY = 'AIzaSyDmNDiCGZNslGnzz4ZCEmKPBKDezKsUyEk'; 
+        const FOLDER_ID = '1tzJhSTVVYbh1J42kimYgGnLZmgd0P0BD'; 
+        
+        const galleryContainer = document.getElementById('gallery-container');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const errorMessage = document.getElementById('error-message');
+        const setupMessage = document.getElementById('setup-message');
+
+        function createImageCard(imageUrl, altText) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'gallery-item relative aspect-square bg-gray-200 rounded-2xl overflow-hidden shadow-md cursor-pointer group hover:shadow-xl transition-shadow duration-300';
+            
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = altText || 'Gallery Image';
+            img.className = 'gallery-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-110';
+            img.loading = 'lazy';
+            
+            img.onload = () => img.classList.add('loaded');
+            img.onerror = () => {
+                img.src = 'https://placehold.co/400x400/e2e8f0/64748b?text=Image+Unavailable';
+                img.classList.add('loaded');
+            };
+
+            // Overlay for hover
+            const overlay = document.createElement('div');
+            overlay.className = 'absolute inset-0 bg-brand-dark/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300';
+            
+            wrapper.appendChild(img);
+            wrapper.appendChild(overlay);
+            return wrapper;
+        }
+
+        async function fetchDriveImages() {
+            try {
+                if (API_KEY === 'YOUR_GOOGLE_API_KEY') {
+                    showPlaceholderGallery();
+                    return;
+                }
+                const fetchUrl = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&fields=files(id,name,mimeType,thumbnailLink)&key=${API_KEY}`;                
+                const response = await fetch(fetchUrl);
+                
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                
+                const data = await response.json();
+                const imageFiles = data.files.filter(file => file.mimeType.startsWith('image/'));
+
+                if (imageFiles.length === 0) throw new Error('No images found.');
+
+                loadingSpinner.classList.add('hidden');
+                galleryContainer.classList.remove('hidden');
+
+                imageFiles.forEach(file => {
+                    const thumbnailUrl = file.thumbnailLink; 
+                    const card = createImageCard(thumbnailUrl, file.name);
+                    galleryContainer.appendChild(card);
+                });
+            } catch (error) {
+                loadingSpinner.classList.add('hidden');
+                errorMessage.classList.remove('hidden');
+                if (error.message.includes('No images') || error.message.includes('API Error')) {
+                    errorMessage.querySelector('p').textContent = `Unable to load gallery: ${error.message}`;
+                }
+            }
+        }
+
+        function showPlaceholderGallery() {
+            setupMessage.classList.remove('hidden');
+            loadingSpinner.classList.add('hidden');
+            galleryContainer.classList.remove('hidden');
+
+            for (let i = 1; i <= 8; i++) {
+                const placeholderUrl = `https://picsum.photos/seed/elishaministry${i}/600/600`;
+                const card = createImageCard(placeholderUrl, `Church Moment ${i}`);
+                galleryContainer.appendChild(card);
+            }
+        }
+
+        fetchDriveImages();
     </script>
 </body>
 </html>
